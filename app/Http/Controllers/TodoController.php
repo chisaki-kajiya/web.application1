@@ -14,15 +14,15 @@ class TodoController extends Controller
         return view('index',['todos' => $todos]);
     }
 
-    public function add(Request $request)
+    public function add()
     {
         $todos = Todo::all();
-        return view('add',['todos' => $todos]);
+        return view('index',['todos' => $todos]);
     }
 
     public function create(TodoRequest $request)
     {
-        $form = $request->allRequest();
+        $form = $request->all();
         Todo::create($form);
         return redirect('/');
     }
@@ -30,12 +30,30 @@ class TodoController extends Controller
     public function delete(Request $request)
     {
         $todo = Todo::find($request->id);
-        return view('delete', ['form' => $todo]);
+        return view('index', ['form' => $todo]);
     }
 
     public function remove(Request $request)
     {
         Todo::find($request->id)->delete();
+        return redirect('/');
+    }
+
+    public function edit(Request $request)
+    {
+        $todo = Todo::find($request->id);
+        $param = [
+            'id' => $todo,
+            'name' => $request->name
+        ];
+        return view('index', ['form' => $param]);
+    }
+
+    public function update(TodoRequest $request)
+    {
+        $form = $request->all();
+        unset($form['_token']);
+        Todo::where('id', $request->id)->update($form);
         return redirect('/');
     }
 }

@@ -20,4 +20,7 @@ Route::get('/add', [TodoController::class, 'add']);
 Route::post('/add', [TodoController::class, 'create']);
 
 Route::get('/delete', [TodoController::class, 'delete']);
-Route::post('/delete', [TodoController::class, 'remove']);
+Route::post('/delete/{id}', [TodoController::class, 'remove']);
+
+Route::get('/update', [TodoController::class, 'edit']);
+Route::post('/update/{param}', [TodoController::class, 'update']);

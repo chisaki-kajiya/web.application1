@@ -14,10 +14,20 @@
 @foreach($todos as $todo)
 <tr>
   <td>{{$todo->created_at}}</td>
-  <td class="input-update">{{$todo->name}}</td>
-  <td class="btn btn-update">更新</td>
   <td>
-    <form action="/todo/delete/{{$todo->id}}" method="post">
+    <form action="/update/{{$param ?? ''}}" method="get">
+    @csrf
+      <input type="text" value="{{$todo->name}}" class="input input-update">
+    </form>
+  </td>
+  <td>
+    <form action="/update/{{$param ?? ''}}" method="get">
+    @csrf
+      <button class="btn btn-update">更新</button>
+    </form>
+  </td>
+  <td>
+    <form action="/delete/{{$todo->id}}" method="post">
     @csrf
       <button class="btn btn-delete">削除</button>
     </form>
