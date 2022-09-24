@@ -15,7 +15,7 @@
 <tr>
   <td>{{$todo->created_at}}</td>
   <td>
-    <form action="/update/{{$param ?? ''}}" method="get">
+    <form action="{{ route('update', ['id' => 1]) }}" method="post">
     @csrf
       <input type="text" value="{{$todo->name}}" class="input input-update">
     </form>
