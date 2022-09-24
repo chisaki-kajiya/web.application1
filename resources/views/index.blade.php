@@ -14,18 +14,15 @@
 @foreach($todos as $todo)
 <tr>
   <td>{{$todo->created_at}}</td>
-  <td>
-    <form action="{{ route('update', ['id' => 1]) }}" method="post">
+  <form action="{{ route('update', ['id' => $todo->id]) }}" method="post">
     @csrf
+    <td>
       <input type="text" value="{{$todo->name}}" class="input input-update">
-    </form>
-  </td>
-  <td>
-    <form action="/update/{{$todo -> id}}" method="get">
-    @csrf
+    </td>
+    <td>
       <button class="btn btn-update">更新</button>
-    </form>
-  </td>
+    </td>
+  </form>
   <td>
     <form action="/delete/{{$todo->id}}" method="post">
     @csrf
