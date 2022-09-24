@@ -50,7 +50,6 @@ class TodoController extends Controller
         $form = $request->all();
         unset($form['_token']);
         Todo::where('id', $request->id)->update($form);
-        $url = route('edit');
-        return redirect()->route('update', ['id' => 1]);
+        return redirect()->route('update', ['id' => $todo->id]);
     }
 }
