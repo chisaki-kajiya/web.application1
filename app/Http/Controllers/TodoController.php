@@ -42,11 +42,7 @@ class TodoController extends Controller
     public function edit(Request $request)
     {
         $todo = Todo::find($request->id);
-        $param = [
-            'id' => $todo,
-            'name' => $request->name
-        ];
-        return view('index', ['form' => $param]);
+        return view('index', ['form' => $todo]);
     }
 
     public function update(TodoRequest $request)

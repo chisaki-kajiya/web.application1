@@ -21,7 +21,7 @@
     </form>
   </td>
   <td>
-    <form action="/update/{{$param ?? ''}}" method="get">
+    <form action="/update/{{$todo -> id}}" method="get">
     @csrf
       <button class="btn btn-update">更新</button>
     </form>

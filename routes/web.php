@@ -23,4 +23,4 @@ Route::get('/delete', [TodoController::class, 'delete']);
 Route::post('/delete/{id}', [TodoController::class, 'remove']);
 
 Route::get('/update', [TodoController::class, 'edit']);
-Route::post('/update/{param}', [TodoController::class, 'update']);
+Route::post('/update/{id}', [TodoController::class, 'update']);
