@@ -14,10 +14,10 @@
 @foreach($todos as $todo)
 <tr>
   <td>{{$todo->created_at}}</td>
-  <form action="/update/{$todo->id}}" method="post">
+  <form action="/update/{{$todo->id}}" method="post">
     @csrf
     <td>
-      <input type="text" value="{{$todo->name}}" class="input input-update">
+      <input type="text" value="{{$todo->name}}" class="input input-update" name="name">
     </td>
     <td>
       <button class="btn btn-update">更新</button>
