@@ -17,7 +17,7 @@
       <div class="card__header">
         <h1 class="title mb-15">Todo List</h1>
         <div class="auth mb-15">
-          <p class="detail">「@yield ('user')」でログイン中
+          <p class="detail">「{{$user->name}}」でログイン中
           </p>
           <form action="/logout" method="post">
             @csrf
@@ -26,12 +26,20 @@
         </div>
       </div>
       <a class="btn btn-search" href="/find">タスク検索</a>
-      @yield('error')
+      @if(count($errors)>0)
+      <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+      </ul>
+      @endif
       <form action="add" method="post" class="flex between mb-30">
         @csrf
         <input type="text" class="input-add" name="name">
         <select name="tag_id" class="select-tag">
-          @yield('tag-option')
+          @foreach($tags as $tag)
+            <option value="{{ $tag->id }}">{{$tag->name}}</option>
+          @endforeach
         </select>
         <button class="btn btn-add">追加</button>
       </form>

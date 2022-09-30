@@ -78,6 +78,13 @@
   outline: none;
 }
 
+.select-tag {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 5px;
+}
+
 .btn {
   text-align: left;
   background-color: #fff;

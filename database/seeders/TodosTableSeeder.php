@@ -15,22 +15,33 @@ class TodosTableSeeder extends Seeder
     public function run()
     {
         $param = [
-            'name' => 'cleaning'
+            'name' => 'Cleaning kitchen',
+            'tag_id' => 1,
+            'user_id' => 1
+
         ];
         Todo::create($param);
 
         $param = [
-            'name' => 'washing'
+            'name' => 'Washing bathroom',
+            'tag_id' => 1,
+            'user_id' => 1
+
         ];
         Todo::create($param);
 
         $param = [
-            'name' => 'cooking'
+            'name' => 'Yogurt',
+            'tag_id' => 4,
+            'user_id' => 1
+
         ];
         Todo::create($param);
 
         $param = [
-            'name' => 'playing'
+            'name' => 'Komeda coffee @11:00',
+            'tag_id' => 5,
+            'user_id' => 1
         ];
         Todo::create($param);
     }
