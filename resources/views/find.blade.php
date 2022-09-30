@@ -35,3 +35,6 @@
 </tr>
 @endforeach
 @endsection
+
+@section('back-btn')
+<a class="btn back-btn" href="/">戻る</a>

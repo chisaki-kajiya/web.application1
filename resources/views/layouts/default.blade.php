@@ -12,24 +12,40 @@
 </head>
 
 <body>
-  <div class="container"></div>
+  <div class="container">
     <div class="card">
-      <h1 class="top-title">Todo List</h1>
+      <div class="card__header">
+        <h1 class="title mb-15">Todo List</h1>
+        <div class="auth mb-15">
+          <p class="detail">「@yield ('user')」でログイン中
+          </p>
+          <form action="/logout" method="post">
+            @csrf
+            <input type="submit" class="btn btn-logout" value="ログアウト">
+          </form>
+        </div>
+      </div>
+      <a class="btn btn-search" href="/find">タスク検索</a>
       @yield('error')
       <form action="add" method="post" class="flex between mb-30">
         @csrf
         <input type="text" class="input-add" name="name">
+        <select name="tag_id" class="select-tag">
+          @yield('tag-option')
+        </select>
         <button class="btn btn-add">追加</button>
       </form>
       <table>
         <tr>
           <th>作成日</th>
           <th>タスク名</th>
+          <th>タグ</th>
           <th>更新</th>
           <th>削除</th>
         </tr>
         @yield('table')
       </table>
+      @yield('back-btn')
     </div>
   </div>
 </body>
