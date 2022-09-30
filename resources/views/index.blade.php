@@ -1,5 +1,32 @@
 @extends('layouts.default')
 
+@section('title')
+Todo List
+@endsection
+
+@section('todo-action')
+  <a class="btn btn-search" href="/find">タスク検索</a>
+
+  @if(count($errors)>0)
+    <ul>
+      @foreach ($errors->all() as $error)
+        <li>{{$error}}</li>
+      @endforeach
+    </ul>
+  @endif
+  
+  <form action="add" method="post" class="flex between mb-30">
+    @csrf
+    <input type="text" class="input-add" name="name">
+    <select name="tag_id" class="select-tag">
+      @foreach($tags as $tag)
+        <option value="{{ $tag->id }}">{{$tag->name}}</option>
+      @endforeach
+    </select>
+    <button class="btn btn-add">追加</button>
+  </form>
+@endsection
+
 @section('table')
 @foreach($todos as $todo)
 <tr>

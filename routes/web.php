@@ -26,6 +26,4 @@ Route::post('/delete/{id}', [TodoController::class, 'remove']);
 Route::get('/update', [TodoController::class, 'edit']);
 Route::post('/update/{id}', [TodoController::class, 'update']);
 
-
-
 require __DIR__.'/auth.php';

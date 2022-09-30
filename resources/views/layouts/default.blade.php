@@ -15,7 +15,7 @@
   <div class="container">
     <div class="card">
       <div class="card__header">
-        <h1 class="title mb-15">Todo List</h1>
+        <h1 class="title mb-15">@yield('title')</h1>
         <div class="auth mb-15">
           <p class="detail">「{{$user->name}}」でログイン中
           </p>
@@ -25,24 +25,7 @@
           </form>
         </div>
       </div>
-      <a class="btn btn-search" href="/find">タスク検索</a>
-      @if(count($errors)>0)
-      <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{$error}}</li>
-        @endforeach
-      </ul>
-      @endif
-      <form action="add" method="post" class="flex between mb-30">
-        @csrf
-        <input type="text" class="input-add" name="name">
-        <select name="tag_id" class="select-tag">
-          @foreach($tags as $tag)
-            <option value="{{ $tag->id }}">{{$tag->name}}</option>
-          @endforeach
-        </select>
-        <button class="btn btn-add">追加</button>
-      </form>
+      @yield('todo-action')
       <table>
         <tr>
           <th>作成日</th>
@@ -53,7 +36,7 @@
         </tr>
         @yield('table')
       </table>
-      @yield('back-btn')
+      @yield('card-footer')
     </div>
   </div>
 </body>
