@@ -56,4 +56,20 @@ class TodoController extends Controller
         Todo::where('id', $request->id)->update($form);
         return redirect('/');
     }
+
+    public function find()
+    {
+        $todos = NULL;
+        $tags = Tag::all();
+        $user = Auth::user();
+        return view('find',['todos' => $todos, 'tags' => $tags, 'user' => $user]);
+    }
+
+    public function search(Request $request)
+    {
+        $todos = Todo::where('name', 'LIKE', "%{$request->name}%")->get();
+        $tags = Tag::all();
+        $user = Auth::user();
+        return view('find',['todos' => $todos, 'tags' => $tags, 'user' => $user]);
+    }
 }

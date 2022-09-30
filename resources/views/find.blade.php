@@ -13,19 +13,21 @@
     </ul>
   @endif
 
-  <form action="add" method="post" class="flex between mb-30">
+  <form action="/find" method="get" class="flex between mb-30">
     @csrf
     <input type="text" class="input-add" name="name">
     <select name="tag_id" class="select-tag">
+        <option value=""></option>
       @foreach($tags as $tag)
         <option value="{{ $tag->id }}">{{$tag->name}}</option>
       @endforeach
     </select>
-    <button class="btn btn-add">追加</button>
+    <button class="btn btn-add">検索</button>
   </form>
 @endsection
 
 @section('table')
+@if (isset($todos))
 @foreach($todos as $todo)
 <tr>
   <td>{{$todo->created_at}}</td>
@@ -56,8 +58,9 @@
   </td>
 </tr>
 @endforeach
+@endif
 @endsection
 
 @section('card-footer')
-<a class="btn back-btn" href="/">戻る</a>
+<a class="btn btn-back" href="/">戻る</a>
 @endsection

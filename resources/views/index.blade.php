@@ -40,7 +40,7 @@ Todo List
       <select name="tag_id" class="select-tag" value="{{$todo->tag_id}}" name="tag_id">
         @foreach($tags as $tag)
           <option value="{{ $tag->id }}"
-          @if( ($todo->tag)->id == $tag->id) selected @endif>
+          @if(($todo->tag)->id == $tag->id) selected @endif>
             {{$tag->name}}
           </option>
         @endforeach
