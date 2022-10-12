@@ -27,7 +27,7 @@ Route::get('/update', [TodoController::class, 'edit']);
 Route::post('/update/{id}', [TodoController::class, 'update']);
 
 Route::get('/find', [TodoController::class, 'find']);
-Route::get('/search', [TodoController::class,
+Route::get('/find', [TodoController::class,
 'search']);
 
 require __DIR__.'/auth.php';
