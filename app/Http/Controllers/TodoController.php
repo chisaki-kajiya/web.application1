@@ -67,7 +67,7 @@ class TodoController extends Controller
 
     public function search(Request $request)
     {
-        $todos = Todo::all();
+        $todos = NULL;
         if(isset($name)){
             $todos = Todo::where('name', 'LIKE', "%{$request->name}%")->get();
         }

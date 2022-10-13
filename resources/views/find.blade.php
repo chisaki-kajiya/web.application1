@@ -13,7 +13,7 @@
     </ul>
   @endif
 
-  <form action="/find" method="get" class="flex between mb-30">
+  <form action="/search" method="get" class="flex between mb-30">
     @csrf
     <input type="text" class="input-add" name="name">
     <select name="tag_id" class="select-tag">
