@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Todo extends Model
 {
     protected $guarded = array('id');
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'tag_id', 'user_id'];
 
     public function tag(){
         return $this->belongsTo('App\Models\Tag');

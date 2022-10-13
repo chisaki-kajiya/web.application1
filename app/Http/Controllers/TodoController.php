@@ -27,6 +27,7 @@ class TodoController extends Controller
     public function create(TodoRequest $request)
     {
         $form = $request->all();
+        $form['user_id'] = Auth::id();
         Todo::create($form);
         return redirect('/');
     }
@@ -68,12 +69,12 @@ class TodoController extends Controller
     public function search(Request $request)
     {
         $todos = NULL;
+        unset($request['_token']);
         if(isset($name)){
             $todos = Todo::where('name', 'LIKE', "%{$request->name}%")->get();
         }
         $tags = Tag::all();
         $user = Auth::user();
-        unset($request['_token']);
         return view('find',['todos' => $todos, 'tags' => $tags, 'user' => $user]);
     }
 }
