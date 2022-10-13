@@ -68,13 +68,15 @@ class TodoController extends Controller
 
     public function search(Request $request)
     {
-        $todos = NULL;
-        unset($request['_token']);
-        if(isset($name)){
-            $todos = Todo::where('name', 'LIKE', "%{$request->name}%")->get();
-        }
         $tags = Tag::all();
         $user = Auth::user();
+        $todos = Todo::query();
+        
+        if(isset($todo)){
+            $todo->where('name', 'LIKE', "%{$request->name}%")->get();
+        }
+        unset($request['_token']);
+        $todos = $todo->get();
         return view('find',['todos' => $todos, 'tags' => $tags, 'user' => $user]);
     }
 }
