@@ -18,13 +18,7 @@ class TodoController extends Controller
         return view('index',['todos' => $todos, 'tags' => $tags, 'user' => $user]);
     }
 
-    public function add()
-    {
-        $todos = Todo::all();
-        return view('index',['todos' => $todos]);
-    }
-
-    public function create(TodoRequest $request)
+    public function add(TodoRequest $request)
     {
         $form = $request->all();
         $form['user_id'] = Auth::id();
@@ -34,20 +28,8 @@ class TodoController extends Controller
 
     public function delete(Request $request)
     {
-        $todo = Todo::find($request->id);
-        return view('index', ['form' => $todo]);
-    }
-
-    public function remove(Request $request)
-    {
-        Todo::find($request->id)->delete();
+        $todo = Todo::find($request->id)->delete();
         return redirect('/');
-    }
-
-    public function edit(Request $request)
-    {
-        $todo = Todo::find($request->id);
-        return view('index', ['form' => $todo]);
     }
 
     public function update(TodoRequest $request)

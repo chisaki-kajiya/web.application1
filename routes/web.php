@@ -17,13 +17,10 @@ use App\Http\Middleware\Authenticate;
 
 Route::get('/', [TodoController::class, 'index'])->middleware('auth');
 
-Route::get('/add', [TodoController::class, 'add']);
-Route::post('/add', [TodoController::class, 'create']);
+Route::post('/add', [TodoController::class, 'add']);
 
-Route::get('/delete', [TodoController::class, 'delete']);
-Route::post('/delete/{id}', [TodoController::class, 'remove']);
+Route::post('/delete/{id}', [TodoController::class, 'delete']);
 
-Route::get('/update', [TodoController::class, 'edit']);
 Route::post('/update/{id}', [TodoController::class, 'update']);
 
 Route::get('/find', [TodoController::class, 'find']);
