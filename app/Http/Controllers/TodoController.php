@@ -54,13 +54,13 @@ class TodoController extends Controller
         $user = Auth::user();
         $todo = Todo::query();
         $tag_id = Todo::query();
-        if(isset($todo)){
+        if(isset($request->name)){
             $todo->where('name', 'LIKE', "%{$request->name}%");
         }
-        if(isset($tag_id)){
+        if(isset($request->tag_id)){
             $todo->where('tag_id', "{$request->tag_id}");
-        }
         unset($request['_token']);
+        }
         $todos = $todo->get();
         return view('find',['todos' => $todos, 'tags' => $tags, 'user' => $user]);
     }
